@@ -9,6 +9,7 @@ odoo.define('pos_cancel_order.order_note', function (require) {
     var PosBaseWidget = require('point_of_sale.BaseWidget');
     var PopupWidget = require('point_of_sale.popups');
     var splitbill = require('pos_restaurant.splitbill');
+    var framework = require('web.framework');
 
     var QWeb = core.qweb;
     var _t = core._t;
@@ -529,6 +530,7 @@ odoo.define('pos_cancel_order.order_note', function (require) {
             }
         },
         save_changes: function(){
+            framework.blockUI();
             var order = this.pos.get_order();
             var line = order.get_selected_orderline();
 
